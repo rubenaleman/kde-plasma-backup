@@ -1,4 +1,10 @@
 #!/bin/bash
+###############################
+# name: kde-plasma-backup.sh
+# description: Script for backup and restore KDE Plasma environment configuration.
+# author: Ruben Aleman Alfonso
+# email: raleman90@gmail.com
+###############################
 
 ## Define global variables
 
