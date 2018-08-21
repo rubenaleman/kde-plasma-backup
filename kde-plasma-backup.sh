@@ -52,7 +52,7 @@ backup(){
         mkdir $BACKUP_DIR
     fi
     
-echo "[*][INFO] Doing backup of KDE environment configuration files."
+    echo "[*][INFO] Doing backup of KDE environment configuration files."
     for file in ${SHARE_FILES[@]}; do
         rsync -aqR ${HOME}/./.local/share/${file} $BACKUP_DIR
     done
