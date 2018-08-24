@@ -9,7 +9,7 @@
 ## Define global variables
 
 SHARE_FILES=("color-schemes" "knewstuff3" "konsole" "kxmlgui5" "plasma" "aurorae" "themes")
-CONFIG_FILES=("dolphinrc" "k*" "plasma*" "powerdevilrc" "powermanagementprofilesrc" "startupconfig" "startupconfigkeys" "systemsettingsrc" "touchpadrc" "gtk-2.0" "gtk-3.0" "gtk-4.0")
+CONFIG_FILES=("dolphinrc" "plasma*" "powerdevilrc" "powermanagementprofilesrc" "startupconfig" "startupconfigkeys" "systemsettingsrc" "touchpadrc" "gtk-2.0" "gtk-3.0" "gtk-4.0")
 OUTPUT_DIR="/tmp"
 BACKUP_DIR="/tmp/kde-configuration-backup"
 RESTORE_DIR="/tmp/kde-configuration-restore"
@@ -53,14 +53,15 @@ backup(){
     fi
     
     echo "[*][INFO] Doing backup of KDE environment configuration files."
-    for file in ${SHARE_FILES[@]}; do
+    for file in ${SHARE_FILES[*]}; do
         rsync -aqR ${HOME}/./.local/share/${file} $BACKUP_DIR
     done
     
-    for file in ${CONFIG_FILES[@]}; do
+    for file in ${CONFIG_FILES[*]}; do
         rsync -aqR ${HOME}/./.config/${file} $BACKUP_DIR
     done
 
+    rsync -aqR ${HOME}/./.config/k* $BACKUP_DIR
     rsync -aqR ${HOME}/./.gtkrc-2.0 $BACKUP_DIR
     
     echo "[*][INFO] Compresing backed up files."
