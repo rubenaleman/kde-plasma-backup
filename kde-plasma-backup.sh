@@ -98,7 +98,7 @@ dropbox_upload(){
         --header "Authorization: Bearer ${DROPBOX_TOKEN}" \
         --header "Dropbox-API-Arg: {\"path\": \"/${BACKUP_NAME}\",\"mode\": \"overwrite\",\"autorename\": true,\"mute\": false,\"strict_conflict\": false}" \
         --header "Content-Type: application/octet-stream" \
-        --data-binary ${OUTPUT_DIR}/${BACKUP_NAME} | jq .
+        --data-binary @${OUTPUT_DIR}/${BACKUP_NAME} | jq .
 }
 
 ## Main
